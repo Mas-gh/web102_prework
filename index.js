@@ -29,7 +29,27 @@ const gamesContainer = document.getElementById("games-container");
 function addGamesToPage(games) {
 
     // loop over each item in the data
+    for (let i = 0; i < games.length; i++) {
+    // Optional: Grab the current game to make it easier to reference
+    const currentGame = games[i]; 
 
+    // 1. Create the new div
+    const addGame = document.createElement("div");
+    
+    // 2. Add the class
+    addGame.classList.add("game-card");
+    
+    // 3. Set the inner HTML (injecting the specific game's data)
+    addGame.innerHTML = `
+        <img class="game-img" src="${currentGame.img}" alt="${currentGame.name}" />
+        <h3>${currentGame.name}</h3>
+        <p>${currentGame.description}</p>
+        <p>Backers: ${currentGame.backers}</p>
+    `;
+    
+    // 4. Append the new game card to the games container on the page
+    gamesContainer.appendChild(addGame);
+}
 
         // create a new div element, which will become the game card
 
